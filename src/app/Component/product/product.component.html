@@ -1,0 +1,43 @@
+<div class="product">
+
+    <h1>Store Name :{{Store.Name}}</h1>
+
+
+    	<img [src]="Store.Logo" width="10%" height="30%"/> 
+
+        <h1>We offer an explicit discount of:{{Discount}}</h1>
+          
+        <select name="" id="" [(ngModel)]="selectedDevice"  (ngModelChange)="onChange()">
+          <option [value]="0">AllProduct</option>
+          <option *ngFor='let item of CategoryList' [value]="item.ID">{{item.Name}} </option>
+
+        </select>
+
+        <table *ngIf="!IsPurshased" class="table ">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor ="let item of SelectedProduct; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.Name}}</td>
+              <td>{{item.Quantity}}</td>
+              <td>{{item.Price}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+          <div  *ngIf="IsPurshased">Thanks for purchasing from our Store {{ClientName}}</div>
+
+        <input [(ngModel)]="ClientName" type="text">
+        <br>
+        <br>
+        <button class="btn btn-danger" (click)="btnClick()">Buy</button>
+            
+</div>
+
